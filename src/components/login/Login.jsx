@@ -28,7 +28,8 @@ class Login extends Component {
             }, {
                 name: 'qwerty',
                 password: 'asd'
-            }]
+            }],
+            error: false
         };
 
         this.renderForm = this.renderForm.bind(this);
@@ -68,11 +69,16 @@ class Login extends Component {
 
         for (let index = 0; index < this.state.users.length; index++) {
             if (this.state.users[index].name === name && this.state.users[index].password === password) {
-                this.props.history.push('/cinemas')
+                this.props.history.push('/cinemas');
+                this.setState({
+                    error: false
+                })
             }
         }
 
-        localStorage.setInte('userLogged', true);
+        this.setState({
+            error: true
+        })
     }
 
     render() {
@@ -80,6 +86,7 @@ class Login extends Component {
             <div className={styles.loginForm}>
                 {this.renderForm()}
                 <button onClick={this.submitForm}>Влез</button>
+                <div className={styles.error}>{this.state.error ? 'Greshen user!' : ''}</div>
             </div>
         );
     }
