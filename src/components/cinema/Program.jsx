@@ -6,6 +6,104 @@ export default class Program extends Component {
         super(props);
 
         this.state = {
+            cinemas: {
+                1: {
+                    movies: {
+                        1: {
+                            name: 'movie 1',
+                            freePlaces: 4,
+                            id: 1
+                        },
+                        2: {
+                            name: 'movie 2',
+                            freePlaces: 3,
+                            id: 2
+                        },
+                        3: {
+                            name: 'movie 3',
+                            freePlaces: 0,
+                            id: 3
+                        },
+                        4: {
+                            name: 'movie 4',
+                            freePlaces: 1,
+                            id: 4
+                        }
+                    }
+                },
+                2: {
+                    movies: {
+                        1: {
+                            name: 'movie 1',
+                            freePlaces: 4,
+                            id: 1
+                        },
+                        2: {
+                            name: 'movie 2',
+                            freePlaces: 5,
+                            id: 2
+                        },
+                        3: {
+                            name: 'movie 3',
+                            freePlaces: 0,
+                            id: 3
+                        },
+                        4: {
+                            name: 'movie 4',
+                            freePlaces: 12,
+                            id: 4
+                        }
+                    }
+                },
+                3: {
+                    movies: {
+                        1: {
+                            name: 'movie 1',
+                            freePlaces: 4,
+                            id: 1
+                        },
+                        2: {
+                            name: 'movie 2',
+                            freePlaces: 20,
+                            id: 2
+                        },
+                        3: {
+                            name: 'movie 3',
+                            freePlaces: 0,
+                            id: 3
+                        },
+                        4: {
+                            name: 'movie 4',
+                            freePlaces: 12,
+                            id: 4
+                        }
+                    }
+                },
+                4: {
+                    movies: {
+                        1: {
+                            name: 'movie 1',
+                            freePlaces: 4,
+                            id: 1
+                        },
+                        2: {
+                            name: 'movie 2',
+                            freePlaces: 20,
+                            id: 2
+                        },
+                        3: {
+                            name: 'movie 3',
+                            freePlaces: 0,
+                            id: 3
+                        },
+                        4: {
+                            name: 'movie 4',
+                            freePlaces: 12,
+                            id: 4
+                        }
+                    }
+                }
+            },
             movies: {
                 1: {
                     name: 'movie 1',
@@ -35,6 +133,10 @@ export default class Program extends Component {
         this.openForm = this.openForm.bind(this);
     }
 
+    componentDidMount(nextProps) {
+
+    }
+
     renderProgram() {
         return Object.keys(this.state.movies).map(key => {
             return (<div className={styles.Program} key={this.state.movies[key].name}>
@@ -54,20 +156,21 @@ export default class Program extends Component {
         }
     }
 
-
     render() {
         return (
             <div className={styles.Cinemas}>
                 {this.renderProgram()}
                 {this.state.showForm ?
-                    <div className="form">
+                    <div className={styles.loginForm}>
                         <label>How many tickets</label>
                         <input type="number" placeholder="tickets"/>
                         <button onClick={() => {
-                        this.setState({
-                            showForm: false
-                        })}
-                        }>Cancel</button>
+                            this.setState({
+                                showForm: false
+                            })
+                        }
+                        }>Cancel
+                        </button>
                         <button>Finish</button>
                     </div>
                     : null}
